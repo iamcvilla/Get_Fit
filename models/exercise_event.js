@@ -2,13 +2,13 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 // create our Post model
-class Exercise extends Model {
+class ExerciseEvent extends Model {
   // static upvote(body, models) {
   //   return models.Vote.create({
   //     user_id: body.user_id,
   //     post_id: body.post_id
   //   }).then(() => {
-  //     return Exercise.findOne({
+  //     return ExerciseEvent.findOne({
   //       where: {
   //         id: body.post_id
   //       },
@@ -37,8 +37,8 @@ class Exercise extends Model {
   // }
 }
 
-// create fields/columns for Exercise model
-Exercise.init(
+// create fields/columns for ExerciseEvent model
+ExerciseEvent.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -46,22 +46,15 @@ Exercise.init(
       primaryKey: true,
       autoIncrement: true
     },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false
+    date: {
+      type: DataTypes.DATE,
+      allowNull: true
     },
-    sets: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    reps: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    calories: {
+    weight: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
+    
     user_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -74,8 +67,8 @@ Exercise.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'exercise'
+    modelName: 'excercise_event'
   }
 );
 
-module.exports = Exercise;
+module.exports = ExerciseEvent;
