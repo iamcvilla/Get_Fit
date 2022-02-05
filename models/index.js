@@ -1,16 +1,40 @@
 // import all models
-// const Post = require('./Post');
 const User = require('./User');
-// const Vote = require('./Vote');
-// const Comment = require('./Comment');
+const Exercises = require('./Exercises');
+const Cardio = require('./Cardio');
+const Strength = require('./Strength');
 
 // create associations
-// User.hasMany(Post, {
-//   foreignKey: 'user_id'
-// });
+User.hasMany(Exercises, {
+  foreignKey: 'user_id'
+});
+
+User.hasMany(Cardio, {
+  foreignKey: 'user_id'
+});
+
+User.hasMany(Strength, {
+  foreignKey: 'user_id'
+});
+
+Exercises.belongsToMany(User, {
+  foreignKey: 'User_id',
+  onDelete: 'SET NULL'
+});
+
+Exercises.hasMany(Cardio, {
+  foreignKey: 'exercise_id'
+});
+
+Exercises.hasMany(Strength, {
+  foreignKey: 'exercise_id'
+});
+
 
 // Post.belongsTo(User, {
 //   foreignKey: 'user_id',
+
+
 //   onDelete: 'SET NULL'
 // });
 
@@ -66,4 +90,4 @@ const User = require('./User');
 //   foreignKey: 'post_id'
 // });
 
-module.exports = { User, Post, Vote, Comment };
+module.exports = { User, Exercises, Cardio, Strength };

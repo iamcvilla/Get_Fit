@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post, Excercise, Vote } = require('../../models');
+const { User, Exercises, Cardio, Strength } = require('../../models');
 
 
 // get all users
@@ -22,22 +22,16 @@ router.get('/:id', (req, res) => {
     },
     include: [
       {
-        model: Excercise,
-        attributes: ['id', 'title', 'post_url', 'created_at']
+        model: Exercises,
+        attributes: ['id', 'segment_name']
       },
       {
-        model: Comment,
-        attributes: ['id', 'comment_text', 'created_at'],
-        include: {
-          model: Post,
-          attributes: ['title']
-        }
+        model: Cardio,
+        attributes: ['id', 'cardio_name', 'duration', 'distance']
       },
       {
-        model: Post,
-        attributes: ['title'],
-        through: Vote,
-        as: 'voted_posts'
+        model: Strength,
+        attributes: ['id', 'strength_name', 'strength_weight', 'strength_sets', 'strength_reps']
       }
     ]
   })
@@ -55,16 +49,18 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
+  // expects {first_name: 'Dude', last_name: 'Daddy', email: 'dude@dude.com', password: 'password123'}
   User.create({
-    username: req.body.username,
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
     email: req.body.email,
     password: req.body.password
   })
   .then(dbUserData => {
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
-      req.session.username = dbUserData.username;
+      req.session.first_name = dbUserData.first_name;
+      req.session.last_name = dbUserData.last_name;
       req.session.loggedIn = true;
   
       res.json(dbUserData);
@@ -97,7 +93,8 @@ router.post('/login', (req, res) => {
     req.session.save(() => {
       // declare session variables
       req.session.user_id = dbUserData.id;
-      req.session.username = dbUserData.username;
+      req.session.first_name = dbUserData.first_name;
+      req.session.last_name = dbUserData.last_name;
       req.session.loggedIn = true;
 
       res.json({ user: dbUserData, message: 'You are now logged in!' });
@@ -117,7 +114,6 @@ router.post('/logout', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-  // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
 
   // pass in req.body instead to only update what's passed through
   User.update(req.body, {
@@ -158,8 +154,8 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-router.get('/', withAuth, (req, res) => {
-  // inner logic remains the same...
-});
+// router.get('/', withAuth, (req, res) => {
+//   // inner logic remains the same...
+// });
 
 module.exports = router;

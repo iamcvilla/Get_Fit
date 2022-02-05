@@ -1,9 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-
-// create Cardio model
-class Cardio extends Model {
+class Exercises extends Model {
   // static upvote(body, models) {
   //   return models.Vote.create({
   //     user_id: body.user_id,
@@ -33,10 +31,10 @@ class Cardio extends Model {
   //     });
   //   });
   // }
-}
+};
 
-// create fields/columns for Exercise model
-Cardio.init(
+// create fields/columns for ExerciseEvent model
+Exercises.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -44,17 +42,9 @@ Cardio.init(
       primaryKey: true,
       autoIncrement: true
     },
-    cardio_name: {
+    segment_name: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-    duration: {
-      type: DataTypes.TIME,
-      allowNull: true,
-    },
-    distance: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -62,22 +52,15 @@ Cardio.init(
         model: 'user',
         key: 'id'
       }
-    },
-    exercise_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'excercises',
-        key: 'id'
-      }
     }
-    
+
   },
   {
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'cardio'
+    modelName: 'excercises'
   }
 );
 
-module.exports = Cardio;
+module.exports = Exercises;
