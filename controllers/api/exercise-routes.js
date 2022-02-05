@@ -1,35 +1,12 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const {User, Exercises} = require('../../models');
+const {User, Exercises, Cardio, Strength} = require('../../models');
 // const withAuth = require('../../utils/auth');
 
 // get all users
 router.get('/', (req, res) => {
   console.log('======================');
-  Exercises.findAll(
-    // attributes: [
-    //   'id',
-    //   'segment_name',
-    //   'user_id',
-    //   // 'created_at',
-    //   [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
-    // ],
-    // include: [
-    //   // {
-    //   //   model: Comment,
-    //   //   attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-    //   //   include: {
-    //   //     model: User,
-    //   //     attributes: ['username']
-    //   //   }
-    //   // },
-    //   {
-    //     model: User,
-    //     attributes: ['first_name', 'last_name', 'email']
-    //   }
-    // ]
-    // })
-  )
+  Exercises.findAll()
     .then(dbExerciseData => res.json(dbExerciseData))
     .catch(err => {
       console.log(err);
@@ -53,6 +30,14 @@ router.get('/:id', (req, res) => {
       {
         model: User,
         attributes: ['id', 'first_name', 'last_name', 'email']
+      },
+      {
+        model: Cardio,
+        attributes: ['id', 'cardio_name', 'duration', 'distance']
+      },
+      {
+        model: Strength,
+        attributes: ['id', 'strength_name', 'strength_weight', 'strength_sets', 'strength_reps']
       }
     ]
   })
@@ -69,7 +54,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', withAuth, (req, res) => {
+router.post('/', /* withAuth, */ (req, res) => {
   // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
   Exercises.create({
     segment_name: req.body.segment_name,

@@ -15,11 +15,11 @@ CREATE DATABASE gf_db;
 --   password VARCHAR(10) NOT NULL
 -- );
 
-CREATE TABLE exercises (
-  id INTEGER AUTO_INCREMENT PRIMARY KEY,
-  segment_name VARCHAR(30) NOT NULL,
-  -- user_id
-);
+-- CREATE TABLE exercises (
+--   id INTEGER AUTO_INCREMENT PRIMARY KEY,
+--   segment_name VARCHAR(30) NOT NULL,
+ 
+-- );
 
 -- CREATE TABLE cardio (
 --   id INTEGER AUTO_INCREMENT PRIMARY KEY,

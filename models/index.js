@@ -9,27 +9,49 @@ User.hasMany(Exercises, {
   foreignKey: 'user_id'
 });
 
-User.hasMany(Cardio, {
-  foreignKey: 'user_id'
+User.belongsToMany(Cardio, {
+  through: Exercises,
+  as: 'user_cardio',
+
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
+});
+
+User.belongsToMany(Strength, {
+  through: Exercises,
+  as: 'user_strength',
+
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
 });
 
 User.hasMany(Strength, {
   foreignKey: 'user_id'
 });
-
-// Exercises.belongsToMany(User, {
-//   foreignKey: 'User_id',
-//   onDelete: 'SET NULL'
-// });
+ 
+Exercises.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
+});
 
 Exercises.hasMany(Cardio, {
-  foreignKey: 'exercise_id'
+  foreignKey: 'cardio_id'
 });
 
 Exercises.hasMany(Strength, {
-  foreignKey: 'exercise_id'
+  foreignKey: 'strength_id'
 });
 
+
+Cardio.belongsTo(Exercises, {
+  foreignKey: 'exercises_id',
+  onDelete: 'SET NULL'
+});
+
+Strength.belongsTo(Exercises, {
+  foreignKey: 'exercises_id',
+  onDelete: 'SET NULL'
+});
 
 // Post.belongsTo(User, {
 //   foreignKey: 'user_id',

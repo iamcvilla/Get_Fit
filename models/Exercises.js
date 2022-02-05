@@ -1,37 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Exercises extends Model {
-  // static upvote(body, models) {
-  //   return models.Vote.create({
-  //     user_id: body.user_id,
-  //     post_id: body.post_id
-  //   }).then(() => {
-  //     return Post.findOne({
-  //       where: {
-  //         id: body.post_id
-  //       },
-  //       attributes: [
-  //         'id',
-  //         'post_url',
-  //         'title',
-  //         'created_at',
-  //         [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
-  //       ],
-  //       include: [
-  //         {
-  //           model: models.Comment,
-  //           attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-  //           include: {
-  //             model: models.User,
-  //             attributes: ['username']
-  //           }
-  //         }
-  //       ]
-  //     });
-  //   });
-  // }
-};
+class Exercises extends Model {};
 
 // create fields/columns for ExerciseEvent model
 Exercises.init(
@@ -48,19 +18,37 @@ Exercises.init(
     },
     user_id: {
       type: DataTypes.INTEGER,
+      // allowNull: false,
       references: {
         model: 'user',
         key: 'id'
       }
+    },
+    cardio_id: {
+      type: DataTypes.INTEGER,
+      // allowNull: false,
+      references: {
+        model: 'cardio',
+        key: 'id'
+      }
+    },
+    strength_id: {
+      type: DataTypes.INTEGER,
+      // allowNull: false,
+      references: {
+        model: 'strength',
+        key: 'id'
+      }
     }
-
   },
   {
     sequelize,
+    timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'excercises'
+    modelName: 'exercises'
   }
+
 );
 
 module.exports = Exercises;
