@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const { Strength } = require('../../models');
-// const /* withAuth , */= require('../../utils/auth');
+const { Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
-  Strength.findAll()
+  Comment.findAll()
     .then(dbCommentData => res.json(dbCommentData))
     .catch(err => {
       console.log(err);
@@ -11,9 +11,9 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/', /* withAuth , */ (req, res) => {
+router.post('/', withAuth, (req, res) => {
   // expects => {comment_text: "This is the comment", user_id: 1, post_id: 2}
-  Strength.create({
+  Comment.create({
     comment_text: req.body.comment_text,
     user_id: req.session.user_id,
     post_id: req.body.post_id
@@ -25,8 +25,8 @@ router.post('/', /* withAuth , */ (req, res) => {
     });
 });
 
-router.delete('/:id', /* withAuth , */ (req, res) => {
-  Strength.destroy({
+router.delete('/:id', withAuth, (req, res) => {
+  Comment.destroy({
     where: {
       id: req.params.id
     }

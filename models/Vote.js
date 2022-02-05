@@ -1,42 +1,26 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Exercises extends Model {};
+class Vote extends Model {}
 
-// create fields/columns for ExerciseEvent model
-Exercises.init(
+Vote.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
-    segment_name: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     user_id: {
       type: DataTypes.INTEGER,
-      // allowNull: false,
       references: {
         model: 'user',
         key: 'id'
       }
     },
-    cardio_id: {
+    post_id: {
       type: DataTypes.INTEGER,
-      // allowNull: false,
       references: {
-        model: 'cardio',
-        key: 'id'
-      }
-    },
-    strength_id: {
-      type: DataTypes.INTEGER,
-      // allowNull: false,
-      references: {
-        model: 'strength',
+        model: 'post',
         key: 'id'
       }
     }
@@ -46,9 +30,8 @@ Exercises.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'exercises'
+    modelName: 'vote'
   }
-
 );
 
-module.exports = Exercises;
+module.exports = Vote;

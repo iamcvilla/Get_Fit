@@ -1,15 +1,11 @@
 const router = require('express').Router();
 
 const userRoutes = require('./user-routes.js');
-const exerciseRoutes = require('./exercise-routes.js');
-const cardioRoutes = require('./cardio-routes.js');
-const strengthRoutes = require('./strength-routes.js');
+const postRoutes = require('./post-routes');
+const commentRoutes = require('./comment-routes');
 
-
-router.use('/User', userRoutes);
-router.use('/Exercises', exerciseRoutes);
-router.use('/Cardio', cardioRoutes);
-router.use('/Strength', strengthRoutes);
-
+router.use('/users', userRoutes);
+router.use('/posts', postRoutes);
+router.use('/comments', commentRoutes);
 
 module.exports = router;
