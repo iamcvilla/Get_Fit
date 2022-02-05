@@ -7,7 +7,7 @@ const strengthRoutes = require('./strength-routes.js');
 
 
 router.use('/User', userRoutes);
-router.use('./Exercises', exerciseRoutes);
+router.use('/Exercises', exerciseRoutes);
 router.use('/Cardio', cardioRoutes);
 router.use('/Strength', strengthRoutes);
 

@@ -12,13 +12,14 @@ CREATE DATABASE gf_db;
 --   first_name VARCHAR(30) NOT NULL,
 --   last_name VARCHAR(30) NOT NULL,
 --   email VARCHAR(50) NOT NULL,
---   password VARCHAR(20) NOT NULL
+--   password VARCHAR(10) NOT NULL
 -- );
 
--- CREATE TABLE exercise_segment (
---   id INTEGER AUTO_INCREMENT PRIMARY KEY,
---   segment_name VARCHAR(30) NOT NULL
--- );
+CREATE TABLE exercises (
+  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  segment_name VARCHAR(30) NOT NULL,
+  -- user_id
+);
 
 -- CREATE TABLE cardio (
 --   id INTEGER AUTO_INCREMENT PRIMARY KEY,

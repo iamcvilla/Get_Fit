@@ -1,4 +1,4 @@
-// import all models
+
 const User = require('./User');
 const Exercises = require('./Exercises');
 const Cardio = require('./Cardio');
@@ -17,10 +17,10 @@ User.hasMany(Strength, {
   foreignKey: 'user_id'
 });
 
-Exercises.belongsToMany(User, {
-  foreignKey: 'User_id',
-  onDelete: 'SET NULL'
-});
+// Exercises.belongsToMany(User, {
+//   foreignKey: 'User_id',
+//   onDelete: 'SET NULL'
+// });
 
 Exercises.hasMany(Cardio, {
   foreignKey: 'exercise_id'
