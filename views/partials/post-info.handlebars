@@ -4,7 +4,14 @@
     {{!-- <span>({{format_url post_url}})</span> --}}
   </div>
   <div class="meta">
-    {{post_date}} {{vote_count}} {{format_plural "point" vote_count}} by {{user.username}} on {{format_date created_at}}
+   <h4>Workout Date: <span class="exercise-criteria">{{format_date created_at}}</span></h4>
+   <h4>Workout: <span class="exercise-criteria">{{title}}</span></h4>
+   <h4>Distance: <span class="exercise-criteria">{{distance}}</span></h4>
+   <h4>Time: <span class="exercise-criteria">{{time}}</span></h4>
+   <h4>Weight: <span class="exercise-criteria">{{weight}}</span></h4>
+   <h4>Sets: <span class="exercise-criteria">{{sets}}</span></h4>
+   <h4>Reps: <span class="exercise-criteria">{{reps}}</span></h4>
+   {{vote_count}} {{format_plural "point" vote_count}} by {{user.username}} on {{format_date created_at}}
     |
     <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
   </div>

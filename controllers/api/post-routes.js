@@ -12,9 +12,11 @@ router.get('/', (req, res) => {
       'title',
       'distance',
       'time',
+      'weight',
       'sets',
       'reps',
       'created_at',
+      'updated_at',
        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
     ],
     include: [
@@ -49,9 +51,11 @@ router.get('/:id', (req, res) => {
       'title',
       'distance',
       'time',
+      'weight',
       'sets',
       'reps',
       'created_at',
+      'updated_at',
        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
     ],
     include: [
@@ -89,7 +93,8 @@ router.post('/', withAuth, (req, res) => {
     distance: req.body.distance,
     time: req.body.time,
     weight: req.body.weight,
-    sets: req.body.set,
+    sets: req.body.sets,
+    reps: req.body.reps,
     user_id: req.session.user_id
   })
     .then(dbPostData => res.json(dbPostData))
@@ -116,7 +121,8 @@ router.put('/:id', withAuth, (req, res) => {
       distance: req.body.distance,
       time: req.body.time,
       weight: req.body.weight,
-      sets: req.body.set
+      sets: req.body.sets,
+      reps: req.body.reps
     },
     {
       where: {

@@ -5,8 +5,31 @@
   </h2>
   <form class="edit-post-form">
     <div>
-      <input name="post-title" type="text" value="{{post.title}}" />
+      <div>
+        <label for="post-title">Workout Name</label>
+        <input name="post-title" type="text" value="{{post.title}}" />
+      </div>
+      <div>
+        <label for="post-distance">Distance (miles)</label>
+        <input name="post-distance" type="number" value="{{post.distance}}" />
+      </div>
+      <div>
+        <label for="post-time">How Long in Time (minutes)?</label>
+        <input name="post-time" type="number" value="{{post.time}}" />
+      </div>
+      <div>
+        <label for="post-weight">How much weight (lbs)?</label>
+        <input name="post-weight" type="number" value="{{post.weight}}" />
+      </div>
+      <div>
+        <label for="post-sets">How many sets?</label>
+        <input name="post-sets" type="number" value="{{post.sets}}" />
+      </div>
+      <div>
+        <label for="post-reps">Reps</label>
+        <input name="post-reps" type="number" value="{{post.reps}}" />
       {{!-- <span>({{format_url post.post_url}})</span> --}}
+      </div>
     </div>
     <div>
       {{post.vote_count}} {{format_plural "point" post.vote_count}} by you on {{format_date post.created_at}}
