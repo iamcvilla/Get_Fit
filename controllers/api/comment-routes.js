@@ -3,6 +3,7 @@ const { Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
+  console.log('======= COMMENT ROUTES ===============');
   Comment.findAll()
     .then(dbCommentData => res.json(dbCommentData))
     .catch(err => {

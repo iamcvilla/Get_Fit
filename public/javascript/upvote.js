@@ -1,3 +1,5 @@
+console.log('----------- upvote.js ----------')
+
 async function upvoteClickHandler(event) {
   event.preventDefault();
 

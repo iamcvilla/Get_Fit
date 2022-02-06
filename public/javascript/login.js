@@ -22,6 +22,8 @@ async function loginFormHandler(event) {
   }
 }
 
+console.log('----------- login.js ----------')
+
 async function signupFormHandler(event) {
   event.preventDefault();
 
