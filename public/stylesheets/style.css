@@ -76,6 +76,7 @@ form label {
 
 header {
   border-bottom: 1px solid #ccc;
+  position: inherit;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -179,4 +180,20 @@ footer {
 
 .exercise-criteria {
   font-style: italic;
+}
+
+.image {
+  
+  background-image: url('../images/workout1.jpg');
+  /* background: rgba(178, 180, 178, 0.3); */
+  background-repeat: no-repeat;
+  background-position: right;
+  background-attachment: fixed;
+  background-size: contain;
+}
+
+.input-color {
+  color: black;
+  text-shadow: 2px, 2px, white, ;
+  
 }

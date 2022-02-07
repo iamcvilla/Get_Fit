@@ -25,9 +25,26 @@ const helpers = require('./utils/helpers');
 
 const hbs = exphbs.create({ helpers });
 
+
+// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
+app.use(express.static("images"));
+
+// Route to display static src images
+app.get("/static", (req, res) => {
+  res.render("static");
+});
+
+// Route to display dynamic src images
+app.get("/dynamic", (req, res) => {
+  imageList = [];
+  imageList.push({ src: "public/images/workout1.jpg", name: "w1" });
+  imageList.push({ src: "public/images/workout2.jpg", name: "w2" });
+  imageList.push({ src: "public/images/workout3.jpg", name: "w3" });
+  res.render("dynamic", { imageList: imageList });
+})
 
 
 app.use(express.json());
