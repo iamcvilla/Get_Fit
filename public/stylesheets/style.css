@@ -76,7 +76,7 @@ form label {
 
 header {
   border-bottom: 1px solid #ccc;
-  position: inherit;
+  /* position: inherit; */
   display: flex;
   justify-content: space-between;
   align-items: center;
