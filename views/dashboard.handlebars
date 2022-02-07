@@ -1,18 +1,18 @@
 <section class="post user image">
-  <h2 class="meta">Hello {{username}}!  What Exercise are you doing?</h2>
+  <h3 class="meta input-color">Hello {{user.username}}!<br>What Exercise are you doing?</h3>
 
   <form class="new-post-form ">
     <div class="input-color">
-      <label class='input color' for="post-title">Workout Name</label>
+      <label class='input-color' for="post-title">Workout Name</label>
       <input type="text" id="post-title" name="post-title" />
     </div>
-    <h2 class="tempName">Please list out your workout data.  <br>Please select at least one criteria and use all that apply.</h2>
+    <h3 class="input-color">Please select your workout data.  <br>Please select at least one criteria,<br>and use all that apply.</h3>
     <div class="input-color">
-      <label class='input color' for="post-distance">Distance (miles)</label>
+      <label class='input-color' for="post-distance">Distance (miles)</label>
        <input type="number" value=0 id="post-distance" name="post-distance" />
     </div>
     <div class="input-color">
-      <label class='input color' for="post-time">How Long in Time (minutes)?</label>
+      <label class='input-color' for="post-time">How Long in Time (minutes)?</label>
        <input type="number" value=0  id="post-time" name="post-time" />
     </div>
     <div class="input-color">
@@ -20,11 +20,11 @@
        <input type="number" value=0  id="post-weight" name="post-weight" />
     </div>
     <div class="input-color">
-      <label class='input color' for="post-sets">How many sets?</label>
+      <label class='input-color' for="post-sets">How many sets?</label>
        <input type="number" value=0  id="post-sets" name="post-sets" />
     </div>
     <div class="input-color">
-      <label class='input color' for="post-reps">Reps</label>
+      <label class='input-color' for="post-reps">Reps</label>
        <input type="number" value=0  id="post-reps" name="post-reps" />
     </div>
     <button type="submit" class="btn">Create</button>
@@ -32,9 +32,9 @@
 </section>
 
 {{#if posts.length}}
-<section>
-  <h2>Your Exercises</h2>
-  <ol>
+<section class="image2">
+  <h2 class="input-color">Your Exercises</h2>
+  <ol class="input-color">
     {{#each posts as |post|}}
     <li>
       {{> post-info post}}

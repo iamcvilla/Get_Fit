@@ -76,7 +76,7 @@ form label {
 
 header {
   border-bottom: 1px solid #ccc;
-  /* position: inherit; */
+  /* position: sticky; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -184,16 +184,29 @@ footer {
 
 .image {
   
-  background-image: url('../images/workout1.jpg');
+  background-image: url('../images/workout2.jpg');
   /* background: rgba(178, 180, 178, 0.3); */
   background-repeat: no-repeat;
   background-position: right;
+  background-attachment: local;
+  background-size: cover;
+}
+
+.image2 {
+  
+  background-image: url('../images/workout1.jpg');
+  /* background: rgba(178, 180, 178, 0.3); */
+  background-repeat: no-repeat;
+  background-position: top;
   background-attachment: fixed;
-  background-size: contain;
+  background-size: auto;
 }
 
 .input-color {
+  width: 300px;
   color: black;
-  text-shadow: 2px, 2px, white, ;
+  background-color: white;
+  background: rgba(253, 253, 253, 0.65)
+
   
 }
