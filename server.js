@@ -40,7 +40,7 @@ app.get("/static", (req, res) => {
 // Route to display dynamic src images
 app.get("/dynamic", (req, res) => {
   imageList = [];
-  imageList.push({ src: "public/images/workout1.jpg", name: "w1" });
+  // imageList.push({ src: "public/images/workout1.jpg", name: "w1" });
   imageList.push({ src: "public/images/workout2.jpg", name: "w2" });
   imageList.push({ src: "public/images/workout3.jpg", name: "w3" });
   res.render("dynamic", { imageList: imageList });
