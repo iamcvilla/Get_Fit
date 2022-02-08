@@ -76,11 +76,15 @@ form label {
 
 header {
   border-bottom: 1px solid #ccc;
-  /* position: sticky; */
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
   padding: 0 1%;
+  z-index: 9999;
 }
 
 header h1 {
@@ -209,4 +213,18 @@ footer {
   background: rgba(253, 253, 253, 0.65)
 
   
+}
+
+nav a {
+  background-color: #225ca3;
+  border: none;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
 }
