@@ -68,13 +68,15 @@ form label {
 .wrapper {
   width: 100%;
   min-height: 100%;
-  max-width: 1200px;
+  max-width: 85%; 
   margin: 0 auto;
   display: flex;
+  justify-content: center;
   flex-direction: column;
 }
 
 header {
+  background-color: rgb(228, 228, 228);
   border-bottom: 1px solid #ccc;
   position: -webkit-sticky;
   position: sticky;
@@ -227,4 +229,29 @@ nav a {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 12px;
+}
+
+.dash {
+  grid-auto-columns: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;  
+}
+
+.dashInputBig {
+  justify-content: center;
+}
+
+.dashPostBig {
+  position: -webkit-sticky;
+}
+
+.section1 {
+  left: 12%;
+  position: fixed;
+}
+
+.section2 {
+  right: 0;
+  margin: auto auto 0 auto;;
 }
