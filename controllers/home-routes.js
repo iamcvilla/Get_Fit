@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const req = require('express/lib/request');
 const sequelize = require('../config/connection');
 const { Post, User, Comment, Vote } = require('../models');
 
@@ -100,6 +101,18 @@ router.get('/login', (req, res) => {
   }
 
   res.render('login');
+});
+
+router.get('/stats/:exercise', (req, res) => {
+ var reps = [20,25];
+ var sets = [3,4];
+ var dates = ['2022-02-07 23:58:51','2022-02-08 23:58:51']
+  req.params.excercise;
+  res.render('stats', {
+    reps,
+    sets,
+    dates
+  });
 });
 
 module.exports = router;

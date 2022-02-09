@@ -1,18 +1,54 @@
 {{!-- {{> post-info post}} --}}
 
-{{#if loggedIn}}
+
 
   <div class="container">
     <div id="chart"></div>
   </div>
 
 
-{{/if}}
-
-{{> comments post.comments}}
-
-{{#if loggedIn}}
 {{!-- <script src="/javascript/comment.js"></script>
 <script src="/javascript/upvote.js"></script> --}}
-<script src="/javascript/stats.js"></script>
-{{/if}}
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<script>
+  console.log('loaded stats file');
+
+
+
+
+
+// Chart Options
+
+const options = {
+  chart: {
+    type: 'line',
+    height: 450,
+    width: '80%',
+    
+  },
+  series: [
+    {
+    name: 'sets',
+    data: {{JSON.stringify(sets)}}
+    },
+    {
+      name: 'reps',
+      data: {{JSON.stringify(reps)}}
+    }
+  ],
+  xaxis: {
+    categories: data: {{JSON.stringify({{dates)}}
+  // plotOptions: {
+  //   bar: {
+
+};
+
+
+// Init chart
+const chart = new ApexCharts(document.querySelector('#chart'), options);
+
+// Render Chart
+chart.render();
+</script>
+

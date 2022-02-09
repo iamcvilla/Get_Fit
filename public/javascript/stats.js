@@ -1,4 +1,11 @@
+console.log('loaded stats file');
+
+
+
+
+
 // Chart Options
+
 const options = {
   chart: {
     type: 'line',
@@ -6,12 +13,18 @@ const options = {
     width: '80%',
     
   },
-  series: [{
-    name: 'sales',
-    data: [30,40,35,50,49,60,70,91,125]
-  }],
+  series: [
+    {
+    name: 'sets',
+    data: [4,5]
+    },
+    {
+      name: 'reps',
+      data: [24,23]
+    }
+  ],
   xaxis: {
-    categories: [1991,1992,1993,1994,1995,1996,1997, 1998,1999]
+    categories: ['2022-02-07 23:03:57', '2022-02-08 01:30:07']
   }
   // plotOptions: {
   //   bar: {
